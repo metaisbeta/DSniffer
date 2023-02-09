@@ -4,8 +4,11 @@
     "module": "commonjs",                               
     "esModuleInterop": true,                            
     "forceConsistentCasingInFileNames": true,           
-    "skipLibCheck": true,                                
+    "skipLibCheck": true,   
+    "rootDirs": ["src"],                             
     "outDir": "./dist",
     "allowJs": true
-  }
+  },
+  "include": ["src"],
+  "exclude": ["projects"]
 }
