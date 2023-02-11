@@ -5,7 +5,6 @@
     "esModuleInterop": true,                            
     "forceConsistentCasingInFileNames": true,           
     "skipLibCheck": true,   
-    "rootDirs": ["src"],                             
     "outDir": "./dist",
     "allowJs": true
   },
