@@ -3,12 +3,12 @@ import * as fs from "fs";
 import * as path from "path";
 import ts from "typescript";
 import { Analyzer } from "./Analyzer"
-
+import { FileModel } from "./models/FileModel"
 
 export class DSniffer {
     execute(dirPath: string) {
         const analyzer = new Analyzer()
-        let decorators: IDecorator[] = []
+        let files: FileModel[] = []
         fs.readdirSync(dirPath).forEach(async target => {
             const targetPath = path.join(dirPath, target)
             const targetStat = fs.statSync(targetPath)
@@ -22,13 +22,13 @@ export class DSniffer {
                         ts.ScriptTarget.Latest,
                         true
                     )
-                    decorators = decorators.concat(analyzer.run(sourceFile))
+                    files = files.concat(analyzer.run(sourceFile, targetPath))
                 }
             } else {
-                decorators = decorators.concat(this.execute(targetPath))
+                files = files.concat(this.execute(targetPath))
             }
         })
     
-        return decorators
+        return files
     }
 }

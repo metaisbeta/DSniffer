@@ -1,31 +1,32 @@
 import { IDecorator } from "./interfaces/IDecorator"
 import { getDecoratorType } from "./utils/decoratorUtils"
+import { FileModel } from "./models/FileModel"
 import ts from "typescript";
 
 
 export class Analyzer {
-    run(sourceFile: ts.SourceFile): IDecorator[] {
-        let decorators: IDecorator[] = []
+    run(sourceFile: ts.SourceFile, filePath: string): FileModel {
+        const file = new FileModel(filePath, sourceFile.fileName)
         getDecoratorNodeInfo(sourceFile)
     
         function getDecoratorNodeInfo(node: ts.Node) {
             if(ts.isDecorator(node)) {
-                let decoratorInfo: IDecorator = {
+                let decorator: IDecorator = {
                     type: getDecoratorType(node),
                     isFactory: false
                 }
                 
                 if(ts.isCallExpression(node.expression)) {
                     const expression = node.expression
-                    decoratorInfo.isFactory = true
-                    decoratorInfo.numParams = expression.arguments.length
+                    decorator.isFactory = true
+                    decorator.numParams = expression.arguments.length
                 }
              
-                decorators.push(decoratorInfo)
+                file.addDecorator(decorator)
             }
             ts.forEachChild(node, getDecoratorNodeInfo)
         }
     
-        return decorators 
+        return file 
     }
 }
