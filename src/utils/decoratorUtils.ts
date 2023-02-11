@@ -1,11 +1,11 @@
 import ts from "typescript";
 
 export function getDecoratorType(node: ts.Node): string {
-    const syntaxKindDictionary = {
-         "260": "class",
-         "171": "method",
-         "166": "parameter",
-         "169": "property"
-    }
+    const syntaxKindDictionary = {}
+    syntaxKindDictionary[ts.SyntaxKind.ClassDeclaration] = "class"
+    syntaxKindDictionary[ts.SyntaxKind.MethodDeclaration] = "method"
+    syntaxKindDictionary[ts.SyntaxKind.Parameter] = "parameter"
+    syntaxKindDictionary[ts.SyntaxKind.PropertyDeclaration] = "propert"
+
     return syntaxKindDictionary[node.parent.kind]
 }
