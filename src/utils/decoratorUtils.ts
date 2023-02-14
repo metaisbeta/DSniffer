@@ -1,4 +1,5 @@
 import ts from "typescript";
+import { DirectoryModel } from "../models/DirectoryModel"
 
 export function getDecoratorType(node: ts.Node): string {
     const syntaxKindDictionary = {}
@@ -8,4 +9,11 @@ export function getDecoratorType(node: ts.Node): string {
     syntaxKindDictionary[ts.SyntaxKind.PropertyDeclaration] = "propert"
 
     return syntaxKindDictionary[node.parent.kind]
+}
+
+export function findDirectory(directories: DirectoryModel[], directoryName: string): DirectoryModel {
+    const existDirectory = directories.find(directory => {
+        return directory.getDirectoryName() === directoryName
+    })
+    return existDirectory
 }

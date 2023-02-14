@@ -4,6 +4,7 @@ import * as path from "path";
 import ts from "typescript";
 import { Analyzer } from "./Analyzer"
 import { DirectoryModel } from "./models/DirectoryModel"
+import { findDirectory } from "./utils/decoratorUtils"
 
 export class DSniffer {
     execute(dirPath: string) {
@@ -41,9 +42,3 @@ export class DSniffer {
     }
 }
 
-function findDirectory(directories: DirectoryModel[], directoryName: string): DirectoryModel {
-    const existDirectory = directories.find(directory => {
-        return directory.getDirectoryName() === directoryName
-    })
-    return existDirectory
-}
