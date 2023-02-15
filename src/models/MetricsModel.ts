@@ -31,4 +31,8 @@ export class Metrics {
 
         this.directories.push(directoryMetrics)
     }
+
+    exportJson() {
+        fs.writeFileSync(`output/${this.projectName}.json`, JSON.stringify(this, null, 4))
+    }
 }

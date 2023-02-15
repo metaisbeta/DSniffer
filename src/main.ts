@@ -19,4 +19,5 @@ function getMetrics(directories: DirectoryModel[], project: string){
     directories.forEach(directory => {
         metric.addDirectoryMetric(directory)
     })
+    metric.exportJson()
 }
