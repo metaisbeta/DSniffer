@@ -17,7 +17,7 @@ fs.readdirSync(projectsPath).forEach(project => {
 function getMetrics(directories: DirectoryModel[], project: string){
     const metric = new Metrics(project)
     directories.forEach(directory => {
-        metric.addDirectoryMetric(directory)
+        metric.getMetrics(directory)
     })
     metric.exportJson()
 }
