@@ -2,9 +2,7 @@ import * as fs from "fs";
 import { IDirectoryMetrics, IFileResult, IDecoratorReport } from "../interfaces/IDirectoryMetrics"
 import { IDecorator } from "..//interfaces/IDecorator"
 import { DirectoryModel } from "../models/DirectoryModel"
-import { getACMetric } from "../metrics/AC"
-import { getAAMetric } from "../metrics/AA"
-
+import { getAAMetric, getACMetric } from "../metrics/index"
 
 
 export class Metrics {
