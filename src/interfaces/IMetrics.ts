@@ -21,5 +21,6 @@ interface IDecoratorMetrics {
 }
 
 interface IFileMetrics {
-    AC: Number
+    AC: Number,
+    UAC: Number
 }

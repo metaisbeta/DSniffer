@@ -2,7 +2,7 @@ import * as fs from "fs";
 import { IDirectoryMetrics, IFileResult, IDecoratorReport } from "../interfaces/IMetrics"
 import { IDecorator } from "..//interfaces/IDecorator"
 import { DirectoryModel } from "../models/DirectoryModel"
-import { getAAMetric, getACMetric } from "../metrics/index"
+import { getAAMetric, getACMetric, getUACMetric } from "../metrics/index"
 
 
 export class Metrics {
@@ -25,7 +25,8 @@ export class Metrics {
                 sourceFilePath: file.getFilePath(),
                 fileName: file.getFileName(),
                 fileMetrics: {
-                    AC: getACMetric(file)
+                    AC: getACMetric(file),
+                    UAC: getUACMetric(file)
                 },
                 decoratorsReport: this.getDecoratorsMetrics(file.getDecorators())
             }
