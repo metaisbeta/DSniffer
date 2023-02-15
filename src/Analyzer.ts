@@ -13,7 +13,8 @@ export class Analyzer {
                 let decorator: IDecorator = {
                     name: node.expression.getFirstToken()?.getText() ?? node.expression.getText(),
                     type: getDecoratorType(node),
-                    isFactory: false
+                    isFactory: false,
+                    numParams: 0
                 }
 
                 if(ts.isCallExpression(node.expression)) {
@@ -21,7 +22,7 @@ export class Analyzer {
                     decorator.isFactory = true
                     decorator.numParams = expression.arguments.length
                 }
-                
+
                 file.addDecorator(decorator)
             }
             ts.forEachChild(node, getDecoratorNodeInfo)
