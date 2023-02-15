@@ -11,7 +11,7 @@ export class Analyzer {
         function getDecoratorNodeInfo(node: ts.Node) {
             if(ts.isDecorator(node)) {
                 let decorator: IDecorator = {
-                    name: node.expression.getFirstToken() ? node.expression.getFirstToken().getText() : node.expression.getText(),
+                    name: node.expression.getFirstToken()?.getText() ?? node.expression.getText(),
                     type: getDecoratorType(node),
                     isFactory: false
                 }
