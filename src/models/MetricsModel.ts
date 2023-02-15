@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { IDirectoryMetrics, IFileResult, IDecoratorReport } from "../interfaces/IDirectoryMetrics"
+import { IDirectoryMetrics, IFileResult, IDecoratorReport } from "../interfaces/IMetrics"
 import { IDecorator } from "..//interfaces/IDecorator"
 import { DirectoryModel } from "../models/DirectoryModel"
 import { getAAMetric, getACMetric } from "../metrics/index"
