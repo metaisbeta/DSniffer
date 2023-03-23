@@ -1,5 +1,5 @@
 import { IDecorator } from "./interfaces/IDecorator"
-import { getDecoratorType } from "./utils/decoratorUtils"
+import { getNodeType, getDecoratorElement } from "./utils/decoratorUtils"
 import { FileModel } from "./models/FileModel"
 import ts from "typescript";
 
@@ -12,11 +12,11 @@ export class Analyzer {
             if(ts.isDecorator(node)) {
                 let decorator: IDecorator = {
                     name: node.expression.getFirstToken()?.getText() ?? node.expression.getText(),
-                    type: getDecoratorType(node),
+                    type: getNodeType(node.parent),
                     isFactory: false,
-                    numParams: 0
+                    numParams: 0,
+                    element: getDecoratorElement(node.parent)
                 }
-
                 if(ts.isCallExpression(node.expression)) {
                     const expression = node.expression
                     decorator.isFactory = true

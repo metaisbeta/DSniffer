@@ -1,3 +1,5 @@
+
+import { IElement } from "./IElement"
 export interface IDirectoryMetrics {
     directoryName: string
     results: IFileResult[]
@@ -14,6 +16,7 @@ export interface IDecoratorReport {
     decoratorName: string
     type: string
     decoratorMetrics: IDecoratorMetrics
+    element: IElement
 }
 
 interface IDecoratorMetrics {

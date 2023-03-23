@@ -45,7 +45,8 @@ export class Metrics {
                 type: decorator.type,
                 decoratorMetrics: {
                     AA: getAAMetric(decorator)
-                }
+                },
+                element: decorator.element
             }
 
             decoratorsReport.push(report)
