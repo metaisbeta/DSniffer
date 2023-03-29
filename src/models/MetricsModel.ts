@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import { IDirectoryMetrics, IFileResult, IDecoratorReport } from "../interfaces/IMetrics"
-import { IDecorator } from "..//interfaces/IDecorator"
+import { IDecorator } from "../interfaces/IDecorator"
 import { DirectoryModel } from "../models/DirectoryModel"
-import { getAAMetric, getACMetric, getUACMetric } from "../metrics/index"
+import { getAAMetric, getACMetric, getUACMetric, getDECLOCMetric } from "../metrics/index"
 
 
 export class Metrics {
@@ -44,7 +44,8 @@ export class Metrics {
                 decoratorName: decorator.name,
                 type: decorator.type,
                 decoratorMetrics: {
-                    AA: getAAMetric(decorator)
+                    AA: getAAMetric(decorator),
+                    DECLOC: getDECLOCMetric(decorator)
                 },
                 element: decorator.element
             }

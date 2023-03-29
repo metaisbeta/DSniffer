@@ -15,6 +15,8 @@ export class Analyzer {
                     type: getNodeType(node.parent),
                     isFactory: false,
                     numParams: 0,
+                    startLine: ts.getLineAndCharacterOfPosition(sourceFile, node.getStart()).line,
+                    endLine: ts.getLineAndCharacterOfPosition(sourceFile, node.getEnd()).line,
                     element: getDecoratorElement(node.parent)
                 }
                 if(ts.isCallExpression(node.expression)) {

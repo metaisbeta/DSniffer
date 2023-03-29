@@ -4,6 +4,9 @@ export interface IDecorator {
     name: string,
     type: string,
     isFactory: boolean,
-    numParams: Number,
+    numParams: number,
+    startLine: number,
+    endLine: number,
     element: IElement
+
 }
