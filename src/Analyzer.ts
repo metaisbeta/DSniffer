@@ -10,12 +10,10 @@ export class Analyzer {
     
         function getDecoratorNodeInfo(node: ts.Node) {
             if(ts.isDecorator(node)) {
-                const decoratorName = node.expression.getFirstToken()?.getText() ?? node.expression.getText();
-                const decoratorArgs = ts.isCallExpression(node.expression) ? node.expression.arguments : [];
-                const args = decoratorArgs.map((arg: ts.Expression)=> arg.getText());
-
+                const decoratorName = node.expression.getFirstToken()?.getText() ?? node.expression.getText()
+                const decoratorKey = ts.isCallExpression(node.expression) ? node.expression.getText() : decoratorName;
                 let decorator: IDecorator = {
-                    key: `${decoratorName}(${args.join(', ')})`,
+                    key: decoratorKey.replace(/\s/g, ''),
                     name: decoratorName,
                     type: getNodeType(node.parent),
                     isFactory: false,
