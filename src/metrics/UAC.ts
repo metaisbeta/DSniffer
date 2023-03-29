@@ -6,7 +6,7 @@ export function getUACMetric(file: FileModel): Number {
     const uniqueDecoratorName = {}
 
     fileDecorators.forEach(decorator => {
-        uniqueDecoratorName[decorator.name] = undefined
+        uniqueDecoratorName[decorator.key] = undefined
     })
 
     return Object.keys(uniqueDecoratorName).length
