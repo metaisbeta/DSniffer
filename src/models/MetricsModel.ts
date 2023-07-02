@@ -42,6 +42,7 @@ export class Metrics {
         decorators.forEach(decorator => {
             const report = {
                 decoratorName: decorator.name,
+                key: decorator.key,
                 type: decorator.type,
                 decoratorMetrics: {
                     AA: getAAMetric(decorator),
